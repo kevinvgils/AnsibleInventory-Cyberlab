@@ -1,0 +1,22 @@
+---
+- name: Stop a container on Proxmox
+  hosts: proxmox
+  become: false
+  vars:
+    ansible_python_interpreter: /root/ansible-env/venv/bin/python
+  tasks:
+    - name: Stop the LXC container
+      community.general.proxmox:
+        node: "{{ lookup('env', 'proxmox_host') }}"
+        api_user: "{{ lookup('env', 'proxmox_user') }}"
+        api_token_id: "{{ lookup('env', 'proxmox_api_token') }}"
+        api_token_secret: "{{ lookup('env', 'proxmox_token_secret') }}"
+        api_host: "{{ lookup('env', 'proxmox_host') }}"
+        state: stopped
+        vmid: "101"
+        validate_certs: no
+      register: start_result
+
+    - name: Display result
+      debug:
+        var: start_result
