@@ -11,6 +11,19 @@
       register: api_status
       failed_when: api_status.status != 200
 
+    - name: Verkrijg ticket voor Proxmox API
+      community.general.proxmox:
+        api_user: "{{ lookup('env', 'proxmox_user') }}"
+        api_password: "{{ lookup('env', 'proxmox_password') }}"
+        api_host: "{{ lookup('env', 'proxmox_host') }}"
+        validate_certs: false
+        state: present
+      register: proxmox_ticket
+
+    - name: Toon de Proxmox ticketinformatie
+      debug:
+        var: proxmox_ticket  
+
     - name: Start the LXC container
       community.general.proxmox:
         node: "{{ lookup('env', 'proxmox_host') }}"
