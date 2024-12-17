@@ -3,25 +3,12 @@
   hosts: proxmox
   become: false
   tasks:
-    - name: Verkrijg ticket voor Proxmox API
-      community.general.proxmox:
-        api_user: "{{ lookup('env', 'proxmox_user') }}"
-        api_password: "{{ lookup('env', 'proxmox_password') }}"
-        api_host: "{{ lookup('env', 'proxmox_host') }}"
-        validate_certs: false
-        state: present
-      register: proxmox_ticket
-
-    - name: Toon de Proxmox ticketinformatie
-      debug:
-        var: proxmox_ticket  
-
     - name: Start the LXC container
       community.general.proxmox:
         node: "{{ lookup('env', 'proxmox_host') }}"
         api_user: "{{ lookup('env', 'proxmox_user') }}"
-        api_password: "{{ lookup('env', 'proxmox_password') }}"
-        api_host: "{{ lookup('env', 'proxmox_host') }}"
+        api_token_id: "{{ lookup('env', 'proxmox_api_key') }}"
+        api_token_secret: "{{ lookup('env', 'proxmox_api_secret') }}"
         state: started
         vmid: "101"
         validate_certs: no
