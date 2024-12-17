@@ -3,7 +3,7 @@
   hosts: proxmox
   become: false
   vars:
-    ansible_python_interpreter: /usr/bin/python3
+    ansible_python_interpreter: /usr/lib/python3/dist-packages
   tasks:
     - name: Start the LXC container
       community.general.proxmox:
