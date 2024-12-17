@@ -1,0 +1,6 @@
+---
+- name: Test verbinding met Proxmox
+  hosts: proxmox
+  tasks:
+    - name: Ping test
+      ping:
