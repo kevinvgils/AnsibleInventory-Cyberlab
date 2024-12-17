@@ -9,7 +9,7 @@
       community.general.proxmox:
         node: "{{ lookup('env', 'proxmox_host') }}"
         api_user: "{{ lookup('env', 'proxmox_user') }}"
-        api_token_id: "{{ lookup('env', 'proxmox_token_id') }}"
+        api_token_id: "{{ lookup('env', 'api_token_id') }}"
         api_token_secret: "{{ lookup('env', 'proxmox_token_secret') }}"
         api_host: "{{ lookup('env', 'proxmox_host') }}"
         state: stopped
