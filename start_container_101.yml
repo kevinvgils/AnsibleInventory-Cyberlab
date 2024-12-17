@@ -1,0 +1,12 @@
+---
+- name: Start Proxmox Container 101
+  hosts: proxmox
+  become: true
+  tasks:
+    - name: Start container 101
+      command: "pct start 101"
+      register: result
+
+    - name: Toon resultaat
+      debug:
+        msg: "{{ result.stdout }}"
