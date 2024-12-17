@@ -2,8 +2,6 @@
 - name: Start a container on Proxmox
   hosts: proxmox
   become: false
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Start the LXC container
       community.general.proxmox:
