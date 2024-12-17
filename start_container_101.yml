@@ -3,14 +3,6 @@
   hosts: proxmox
   become: false
   tasks:
-    - name: Ensure Proxmox API is reachable
-      uri:
-        url: "https://{{ lookup('env', 'proxmox_host') }}:8006/api2/json"
-        method: GET
-        validate_certs: no
-      register: api_status
-      failed_when: api_status.status != 200
-
     - name: Verkrijg ticket voor Proxmox API
       community.general.proxmox:
         api_user: "{{ lookup('env', 'proxmox_user') }}"
