@@ -1,12 +1,27 @@
 ---
-- name: Start Proxmox Container 101
+- name: Start a container on Proxmox
   hosts: proxmox
-  become: true
+  become: false
   tasks:
-    - name: Start container 101
-      command: "pct start 101"
-      register: result
+    - name: Ensure Proxmox API is reachable
+      uri:
+        url: "https://{{ proxmox_host }}:8006/api2/json"
+        method: GET
+        validate_certs: no
+      register: api_status
+      failed_when: api_status.status != 200
 
-    - name: Toon resultaat
+    - name: Start the LXC container
+      community.general.proxmox:
+        node: "{{ proxmox_host }}"
+        api_user: "{{ proxmox_user }}"
+        api_password: "{{ proxmox_password }}"
+        api_host: "{{ proxmox_host }}"
+        state: started
+        vmid: "101"
+        validate_certs: no
+      register: start_result
+
+    - name: Display result
       debug:
-        msg: "{{ result.stdout }}"
+        var: start_result
