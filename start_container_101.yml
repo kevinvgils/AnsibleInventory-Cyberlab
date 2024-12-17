@@ -3,7 +3,7 @@
   hosts: proxmox
   become: false
   vars:
-    ansible_python_interpreter: /opt/semaphore/apps/ansible/9.4.0/venv/bin/python3
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Start the LXC container
       community.general.proxmox:
