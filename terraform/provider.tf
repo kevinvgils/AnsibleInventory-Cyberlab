@@ -24,7 +24,7 @@ variable "proxmox_api_url" {
 
 variable "proxmox_api_token_id" {
   type    = string
-  default = "testingtoken"  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
+  default = "testingtoken!"  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
 }
 
 variable "proxmox_api_token_secret" {
