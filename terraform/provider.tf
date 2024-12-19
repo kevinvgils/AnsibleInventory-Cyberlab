@@ -18,15 +18,15 @@ provider "proxmox" {
 
 variable "proxmox_api_url" {
   type    = string
-  default = "https://${env("proxmox_host")}/api2/json"  # Variabelen kunnen direct vanuit omgevingsvariabelen gehaald worden
+  default = "https://192.168.178.178/api2/json"  # Variabelen kunnen direct vanuit omgevingsvariabelen gehaald worden
 }
 
 variable "proxmox_api_token_id" {
   type    = string
-  default = ""  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
+  default = "baf438da-131e-465a-98d8-06e3a54c258b"  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
 }
 
 variable "proxmox_api_token_secret" {
   type    = string
-  default = ""  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
+  default = "testingtoken"  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
 }
