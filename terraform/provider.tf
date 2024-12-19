@@ -14,6 +14,7 @@ provider "proxmox" {
   pm_api_token_id   = var.proxmox_api_token_id
   pm_api_token_secret = var.proxmox_api_token_secret
   pm_tls_insecure = true # Zet op false als je een geldig certificaat gebruikt
+  pm_user = "testing@pve"
 }
 
 variable "proxmox_api_url" {
@@ -23,7 +24,7 @@ variable "proxmox_api_url" {
 
 variable "proxmox_api_token_id" {
   type    = string
-  default = "testingtoken!"  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
+  default = "testingtoken"  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
 }
 
 variable "proxmox_api_token_secret" {
