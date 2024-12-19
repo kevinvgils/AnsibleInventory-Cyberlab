@@ -15,7 +15,6 @@ provider "proxmox"{
   pm_api_token_secret = var.proxmox_api_token_secret
   pm_tls_insecure     = true # Set to false if using a valid SSL certificate
   pm_user             = "testing" # Ensure the username is correct
-  pm_realm            = "pve" # Ensure the username is correct
 }
 
 
