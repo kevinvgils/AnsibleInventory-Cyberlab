@@ -10,9 +10,11 @@ terraform {
 }
 
 provider "proxmox" {
-  endpoint  = var.proxmox_api_url
-  api_token = "testing@pve!testingtoken=baf438da-131e-465a-98d8-06e3a54c258b"
-  insecure  = true
+  pm_user = "testing@pve"
+  pm_api_url  = var.proxmox_api_url
+  pm_api_token_id = "testingtoken"
+  pm_api_token_secret = "baf438da-131e-465a-98d8-06e3a54c258b"
+  pm_tls_insecure  = true
 }
 
 
