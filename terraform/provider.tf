@@ -19,7 +19,7 @@ provider "proxmox" {
 
 variable "proxmox_api_url" {
   type    = string
-  default = "https://192.168.178.178/api2/json"  # Variabelen kunnen direct vanuit omgevingsvariabelen gehaald worden
+  default = "https://192.168.178.178:8006/api2/json"  # Variabelen kunnen direct vanuit omgevingsvariabelen gehaald worden
 }
 
 variable "proxmox_api_token_id" {
