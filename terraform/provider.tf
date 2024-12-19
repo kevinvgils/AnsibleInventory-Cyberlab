@@ -9,12 +9,10 @@ terraform {
   required_version = ">= 1.3.0"
 }
 
-provider "proxmox"{
-  user             = "testing@pve" # Ensure the username is correct
-  url              = var.proxmox_api_url
-  api_token_id     = var.proxmox_api_token_id
-  api_token_secret = var.proxmox_api_token_secret
-  tls_insecure     = true # Set to false if using a valid SSL certificate
+provider "proxmox" {
+  endpoint  = var.proxmox_api_url
+  api_token = "testing@pve!testingtoken=baf438da-131e-465a-98d8-06e3a54c258b"
+  insecure  = true
 }
 
 
