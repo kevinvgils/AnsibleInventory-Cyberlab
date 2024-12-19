@@ -10,23 +10,23 @@ terraform {
 }
 
 provider "proxmox" {
-  pm_api_url      = var.proxmox_api_url
-  pm_api_token_id = var.proxmox_api_token_id
+  pm_api_url        = var.proxmox_api_url
+  pm_api_token_id   = var.proxmox_api_token_id
   pm_api_token_secret = var.proxmox_api_token_secret
   pm_tls_insecure = true # Zet op false als je een geldig certificaat gebruikt
 }
 
 variable "proxmox_api_url" {
-  description = "The API URL for the Proxmox server"
-  default     = env("proxmox_host")
+  type    = string
+  default = "https://${env("proxmox_host")}/api2/json"  # Variabelen kunnen direct vanuit omgevingsvariabelen gehaald worden
 }
 
 variable "proxmox_api_token_id" {
-  description = "The API token ID for the Proxmox server"
-  default     = env("api_token_id")
+  type    = string
+  default = ""  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
 }
 
 variable "proxmox_api_token_secret" {
-  description = "The API token secret for the Proxmox server"
-  default     = env("proxmox_token_secret")
+  type    = string
+  default = ""  # Een lege string is nodig, want deze wordt ingesteld via omgevingsvariabele
 }
